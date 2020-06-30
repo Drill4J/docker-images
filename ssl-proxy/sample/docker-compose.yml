@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  ssl-proxy:
+    image: drill4j/ssl-proxy
+    ports:
+      - 8443:8443
+    environment:
+      DOMAIN: www.example.com
+      SSL_PORT: 8443
+      TARGET_HOST: nginx-hello
+      TARGET_PORT: 80
+  nginx-hello:
+    image: nginxdemos/hello
+    ports:
+      - 8080:80
